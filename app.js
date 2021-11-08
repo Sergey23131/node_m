@@ -13,6 +13,7 @@ mongoose.connect(MONGO_CONNECT_URL);
 app.use('/apartments', apartmentRouter);
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
+//app.use('/manager', managerRouter);
 app.use('/admin', adminRouter);
 
 app.use('*', (err, req, res, next) => {
