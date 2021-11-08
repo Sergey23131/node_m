@@ -18,7 +18,6 @@ module.exports = {
             if (loginInfo) {
                 throw new ErrorHandler(errors_massage.EMAIL_EXIST, errors_code.EXIST);
             }
-
             next();
         } catch (e) {
             next(e);

@@ -1,4 +1,4 @@
-const Admin = require('../database/Admin');
+const Apartment = require('../database/Apartmens');
 const Manager = require('../database/Manager');
 const User = require('../database/Users');
 const O_Auth = require('../database/O_Auth');
@@ -15,41 +15,11 @@ module.exports = {
         }
     },
 
-    getAdmins: async (req, res, next) => {
-        try {
-            const allAdmins = await Admin.find();
-
-            res.json(allAdmins);
-        } catch (e) {
-            next(e);
-        }
-    },
-
     getManagers: async (req, res, next) => {
         try {
             const allManagers = await Manager.find();
 
             res.json(allManagers);
-        } catch (e) {
-            next(e);
-        }
-    },
-
-    createAdmin: async (req, res, next) => {
-        try {
-            const newAdmin = await Admin.createHashPassword(req.body);
-
-            res.status(errors_code.UPDATE_DATA).json(newAdmin);
-        } catch (e) {
-            next(e);
-        }
-    },
-
-    createManager: async (req, res, next) => {
-        try {
-            const newManager = await Manager.createHashPassword(req.body);
-
-            res.status(errors_code.UPDATE_DATA).json(newManager);
         } catch (e) {
             next(e);
         }
@@ -61,6 +31,18 @@ module.exports = {
 
             await User.findByIdAndDelete(id) || await Manager.findByIdAndDelete(id);
             await O_Auth.findByIdAndDelete(id);
+
+            res.status(errors_code.REMOVE).json(errors_massage.REMOVE_USER);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    deleteApartmentPost: async (req, res, next) => {
+        try {
+            const {id} = req.body;
+
+            await Apartment.findByIdAndDelete(id);
 
             res.status(errors_code.REMOVE).json(errors_massage.REMOVE_USER);
         } catch (e) {

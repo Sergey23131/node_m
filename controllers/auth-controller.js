@@ -1,4 +1,6 @@
 const User = require('../database/Users');
+const Manager = require('../database/Manager');
+const Admin = require('../database/Admin');
 const O_Auth = require('../database/O_Auth');
 const {jwtService, passwordService} = require('../services');
 const {errors_massage, errors_code} = require('../errors');
@@ -19,7 +21,9 @@ module.exports = {
                 user_id: req.user._id
             });
 
-            const oneUser = await User.findById(req.user.id).select('-password');
+            const oneUser = await User.findById(req.user.id).select('-password') ||
+                await Manager.findById(req.user.id).select('-password') ||
+                await Admin.findById(req.user.id).select('-password');
 
             res.json({
                 user: oneUser,

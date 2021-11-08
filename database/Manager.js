@@ -16,8 +16,8 @@ const managerSchema = new Schema({
     },
     role: {
         type: String,
-        default: userRoles.USER,
-        enum: Object.values(userRoles.MANAGER)
+        default: userRoles.MANAGER,
+        enum: Object.values(userRoles)
     },
     password: {
         type: String,

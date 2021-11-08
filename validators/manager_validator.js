@@ -17,7 +17,7 @@ const managerValidator = Joi.object({
         .required(),
     role: Joi
         .string()
-        .allow(...Object.values(userRoles.MANAGER)),
+        .allow(...Object.values(userRoles)),
     password: Joi
         .string()
         .regex(PASSWORD_REGEXP)

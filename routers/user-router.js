@@ -10,4 +10,6 @@ router.post('/book', bookApartmentMiddleware.bookApartmentMiddleware, tokenMiddl
 
 //Привязать созданные и забронированные дома к юзеру
 
+//Дать возможность обновлять инфу про пост
+
 module.exports = router;
