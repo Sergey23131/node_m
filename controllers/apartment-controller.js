@@ -5,10 +5,18 @@ module.exports = {
         try {
             const allApartments = await Apartmens.find();
 
-            res.json('allApartmens');
+            res.json(allApartments);
         } catch (e) {
             next(e);
         }
+    },
+    getApartmentByID: async (req, res, next) => {
+        try {
+            const oneApartment = await Apartmens.findById(req.params);
 
+            res.json(oneApartment);
+        } catch (e) {
+            next(e);
+        }
     },
 };

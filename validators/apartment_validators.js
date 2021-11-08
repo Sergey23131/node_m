@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const {EMAIL_REGEXP} = require('../configs/constants');
 
 const apartmentValidator = Joi.object({
     title: Joi

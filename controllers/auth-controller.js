@@ -70,16 +70,4 @@ module.exports = {
             next(e);
         }
     },
-
-    deleteAccount: async (req, res, next) => {
-        try {
-            await User.findByIdAndDelete(req.user.id);
-            await O_Auth.findOneAndDelete(req.token);
-
-            res.status(errors_code.REMOVE).json(errors_massage.REMOVE_USER);
-        } catch (e) {
-            next(e);
-        }
-    },
-
 };

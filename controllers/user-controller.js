@@ -5,7 +5,7 @@ module.exports = {
     createApartment: async (req, res, next) => {
         try {
 
-            res.status(errors_code.UPDATE_DATA).json();
+            res.status(errors_code.UPDATE_DATA).json(req.apartment);
         } catch (e) {
             next(e);
         }
@@ -15,7 +15,7 @@ module.exports = {
     bookApartment: async (req, res, next) => {
         try {
 
-            res.status(errors_code.UPDATE_DATA).json();
+            res.status(errors_code.UPDATE_DATA).json(req.booked);
         } catch (e) {
             next(e);
         }
