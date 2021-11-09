@@ -9,4 +9,5 @@ module.exports = {
     INVALID_ACTION: 'Invalid action',
     FORGOT_PASSWORD: 'User not found',
     WRONG_TOKEN: 'Wrong token type',
+    WAS_BOOKED:'Apartment was booked'
 };

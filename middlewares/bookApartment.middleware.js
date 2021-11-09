@@ -16,10 +16,10 @@ module.exports = {
                 throw new ErrorHandler(errors_massage.NOT_VALID_BODY, errors_code.NOT_VALID);
             }
 
-            const isApartmentExists = RentedApartment.findById(apartment_id);
+            const isApartmentFree = RentedApartment.findById(apartment_id);
 
-            if (isApartmentExists) {
-                throw new ErrorHandler(errors_massage.NOT_VALID_BODY, errors_code.EXIST);
+            if (isApartmentFree) {
+                throw new ErrorHandler(errors_massage.WAS_BOOKED, errors_code.NOT_VALID);
             }
 
             const authInfo = await O_Auth.findOne(req.token);

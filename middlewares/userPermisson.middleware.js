@@ -18,7 +18,7 @@ module.exports = {
             const user = await User.findOne({userId});
 
             if (!user) {
-                throw new ErrorHandler(errors_massage.EMAIL_EXIST, errors_code.EXIST);
+                throw new ErrorHandler(errors_massage.ACCESS, errors_code.NOT_VALID);
             }
 
             req.user_id = userId;
