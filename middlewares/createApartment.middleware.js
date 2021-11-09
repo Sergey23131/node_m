@@ -7,7 +7,6 @@ const {errors_massage, errors_code, ErrorHandler} = require('../errors');
 module.exports = {
     createApartmentMiddleware: async (req, res, next) => {
         try {
-            console.log('sss');
             const {error, value} = apartmentValidator.apartmentValidator.validate(req.body);
 
             if (error) {
