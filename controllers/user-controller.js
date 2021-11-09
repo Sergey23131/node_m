@@ -9,16 +9,32 @@ module.exports = {
         } catch (e) {
             next(e);
         }
-
     },
 
-    bookApartment: async (req, res, next) => {
+    bookApartment: (req, res, next) => {
         try {
 
             res.status(errors_code.UPDATE_DATA).json(req.booked);
         } catch (e) {
             next(e);
         }
+    },
 
+    updateApartment: (req, res, next) => {
+        try {
+
+            res.status(errors_code.UPDATE_DATA).json(req.booked);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    bookApartment: (req, res, next) => {
+        try {
+
+            res.status(errors_code.UPDATE_DATA).json(req.booked);
+        } catch (e) {
+            next(e);
+        }
     },
 }

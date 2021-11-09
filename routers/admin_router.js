@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const adminRouter = require('express').Router();
 
 const {adminController} = require('../controllers');
 
@@ -7,17 +7,37 @@ const createAdminMiddleware = require('../middlewares/createAdmin.middleware');
 const createManagerMiddleware = require('../middlewares/createManager.middleware');
 const tokenMiddleware = require('../middlewares/token.middleware');
 
-router.post('/createAdmin', permissionMiddleware.adminPermissonMiddleware, tokenMiddleware.checkAccessToken, createAdminMiddleware.createAdminMiddleware, adminController.createAdmin);
+adminRouter.post('/createAdmin',
+    permissionMiddleware.adminPermissonMiddleware,
+    tokenMiddleware.checkAccessToken,
+    createAdminMiddleware.createAdminMiddleware,
+    adminController.createAdmin);
 
-router.post('/createManager', permissionMiddleware.adminPermissonMiddleware, tokenMiddleware.checkAccessToken, createManagerMiddleware.createManagerMiddleware, adminController.createManager);
+adminRouter.post('/createManager',
+    permissionMiddleware.adminPermissonMiddleware,
+    tokenMiddleware.checkAccessToken,
+    createManagerMiddleware.createManagerMiddleware,
+    adminController.createManager);
 
-router.get('/users', permissionMiddleware.adminPermissonMiddleware, tokenMiddleware.checkAccessToken, adminController.getUsers);
+adminRouter.get('/users',
+    permissionMiddleware.adminPermissonMiddleware,
+    tokenMiddleware.checkAccessToken,
+    adminController.getUsers);
 
-router.get('/Admins', permissionMiddleware.adminPermissonMiddleware, tokenMiddleware.checkAccessToken, adminController.getAdmins);
+adminRouter.get('/Admins',
+    permissionMiddleware.adminPermissonMiddleware,
+    tokenMiddleware.checkAccessToken,
+    adminController.getAdmins);
 
-router.get('/Managers', permissionMiddleware.adminPermissonMiddleware, tokenMiddleware.checkAccessToken, adminController.getManagers);
+adminRouter.get('/Managers',
+    permissionMiddleware.adminPermissonMiddleware,
+    tokenMiddleware.checkAccessToken,
+    adminController.getManagers);
 
-router.delete('/deleteAccount', permissionMiddleware.adminPermissonMiddleware, tokenMiddleware.checkAccessToken, adminController.deleteAccount);
+adminRouter.delete('/deleteAccount',
+    permissionMiddleware.adminPermissonMiddleware,
+    tokenMiddleware.checkAccessToken,
+    adminController.deleteAccount);
 
-module.exports = router;
+module.exports = adminRouter;
 

@@ -28,4 +28,8 @@ const apartmentSchema = new Schema({
     },
 }, {timestamps: true, toObject: {virtuals: true}, toJSON: {virtuals: true}});
 
+apartmentSchema.pre('findOne', function() {
+    this.populate('user_id');
+});
+
 module.exports = model('apartment', apartmentSchema);

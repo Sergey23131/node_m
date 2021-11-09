@@ -1,8 +1,7 @@
 const O_Auth = require('../database/O_Auth');
 const {jwtService} = require('../services');
 const {AUTHORIZATION} = require('../configs/constants');
-const tokenType = require('../configs/tokenType');
-
+const {ACCESS, REFRESH} = require('../configs/tokenType');
 const {errors_massage, errors_code, ErrorHandler} = require('../errors');
 
 module.exports = {
@@ -14,7 +13,7 @@ module.exports = {
                 throw new ErrorHandler(errors_massage.NOT_VALID_TOKEN, errors_code.NOT_VALID);
             }
 
-            await jwtService.verifyToken(token);
+            await jwtService.verifyToken(token, ACCESS);
 
             const tokenResponse = await O_Auth
                 .findOne({access_token: token})
@@ -41,7 +40,7 @@ module.exports = {
                 throw new ErrorHandler(errors_massage.NOT_VALID_TOKEN, errors_code.NOT_VALID);
             }
 
-            await jwtService.verifyToken(token, tokenType.REFRESH);
+            await jwtService.verifyToken(token, REFRESH);
 
             const tokenResponse = await O_Auth
                 .findOne({refresh_token: token});
