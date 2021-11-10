@@ -26,6 +26,11 @@ const apartmentSchema = new Schema({
         required: true,
         trim: true
     },
+    user_id: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'user'
+    }
 }, {timestamps: true, toObject: {virtuals: true}, toJSON: {virtuals: true}});
 
 apartmentSchema.pre('findOne', function() {

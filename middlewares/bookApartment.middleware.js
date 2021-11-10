@@ -2,11 +2,16 @@ const Apartment = require('../database/Apartmens');
 const O_Auth = require('../database/O_Auth');
 const RentedApartment = require('../database/RentedApartmens');
 const {errors_massage, errors_code, ErrorHandler} = require('../errors');
+const apartmentValidator= require('../validators/bookApartment_validator');
 
 module.exports = {
     bookApartmentMiddleware: async (req, res, next) => {
         try {
-            // Нужно добавить валидатор для даты снятия и добавить даты в RentedApartment
+            const {error,value} = apartmentValidator.apartmentValidator.validate(req.body);
+
+            if (error) {
+                throw new ErrorHandler(errors_massage.NOT_VALID_BODY, errors_code.NOT_VALID);
+            }
 
             const apartment_id = req.params;
 

@@ -13,20 +13,7 @@ module.exports = {
                 throw new ErrorHandler(errors_massage.NOT_VALID_BODY, errors_code.NOT_VALID);
             }
 
-            //const user_id = req.user_id;
-           /* const token = req.token;
-
-            const user = await O_Auth.findOne({token});
-
-            if (!user) {
-                throw new ErrorHandler(errors_massage.NOT_VALID_TOKEN, errors_code.NOT_VALID);
-            }
-*/
-            console.log( req.user_id);
-
             const newApartment = await Apartment.create({...req.body, user_id: req.user_id});
-
-            console.log(newApartment);
 
             req.apartment = newApartment;
 

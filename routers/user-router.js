@@ -19,20 +19,14 @@ userRouter.post('/book',
     bookApartmentMiddleware.bookApartmentMiddleware,
     userController.bookApartment);
 
-userRouter.post('/update',
+userRouter.put('/update/:apartment_id',
     tokenMiddleware.checkAccessToken,
     userPermission.userPermissonMiddleware,
     updateMiddleware.updateMiddleware,
     userController.updateApartment);
 
-//Привязать созданные и забронированные дома к юзеру
+//Привязать забронированные дома к юзеру
 // добавить даты бронирования для rented database
-
-// Доделать обновление поста
-
-//при добавлении поста нету привязки к айди юзера
-
-//Дать возможность обновлять инфу про пост
 
 //Подумать,можно ли сделать так что бы только юзер чье обьявление мог его изменять
 

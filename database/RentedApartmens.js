@@ -1,23 +1,28 @@
 const {Schema, model} = require('mongoose');
 
 const rentedApartmentSchema = new Schema({
-    country: {
+    name: {
         type: String,
         required: true,
         trim: true
     },
-    city: {
+    surname: {
         type: String,
         required: true,
         trim: true
     },
-    region: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    square_feet: {
+    phoneNumber: {
         type: Number,
+        required: true,
+        trim: true
+    },
+    arrival_date: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    departure_day: {
+        type: String,
         required: true,
         trim: true
     },
@@ -25,6 +30,16 @@ const rentedApartmentSchema = new Schema({
         type: Number,
         required: true,
         trim: true
+    },
+    apartment_id: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'apartment'
+    },
+    user_id: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'user'
     },
 }, {timestamps: true, toObject: {virtuals: true}, toJSON: {virtuals: true}});
 
