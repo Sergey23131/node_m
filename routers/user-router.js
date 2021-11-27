@@ -13,7 +13,7 @@ userRouter.post('/create',
     createApartmentMiddleware.createApartmentMiddleware,
     userController.createApartment);
 
-userRouter.post('/book',
+userRouter.post('/book/:apartment_id',
     tokenMiddleware.checkAccessToken,
     userPermission.userPermissonMiddleware,
     bookApartmentMiddleware.bookApartmentMiddleware,
@@ -26,7 +26,12 @@ userRouter.put('/update/:apartment_id',
     userController.updateApartment);
 
 //Привязать забронированные дома к юзеру
+
 // добавить даты бронирования для rented database
+
+//Добавить рассылку на почту тем кто бронирует и тем чье обьявление
+
+//Добавить в миделваре бронирования проверку по датам брони(мб проще на фронте блочить)
 
 //Подумать,можно ли сделать так что бы только юзер чье обьявление мог его изменять
 

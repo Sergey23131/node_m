@@ -25,5 +25,7 @@ managerRouter.delete('/deleteApartment',
     tokenMiddleware.checkAccessToken,
     managerController.deleteApartmentPost);
 
+//Можно добавить апдейт для поста менеджером
+
 module.exports = managerRouter;
 

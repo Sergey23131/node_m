@@ -13,7 +13,9 @@ module.exports = {
 
             const apartment_id = req.params.apartment_id;
 
-            await Apartment.findByIdAndUpdate(apartment_id, req.body);
+            const user = await Apartment.findByIdAndUpdate(apartment_id, req.body);
+
+            req.user = user;
 
             next();
         } catch (e) {
