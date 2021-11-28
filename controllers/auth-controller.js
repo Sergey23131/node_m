@@ -2,8 +2,9 @@ const User = require('../database/Users');
 const Manager = require('../database/Manager');
 const Admin = require('../database/Admin');
 const O_Auth = require('../database/O_Auth');
-const {jwtService, passwordService} = require('../services');
-const {errors_massage, errors_code} = require('../errors');
+const {WELCOME} = require('../configs/email.actions');
+const {jwtService, passwordService,emailService} = require('../services');
+const {errors_code} = require('../errors');
 
 module.exports = {
     authUser: async (req, res, next) => {
@@ -48,6 +49,8 @@ module.exports = {
     createUser: async (req, res, next) => {
         try {
             const newUser = await User.createHashPassword(req.body);
+
+            await emailService.sendMail(newUser.email, WELCOME, {userName: newUser.name,userSurname:newUser.surname});
 
             res.status(errors_code.UPDATE_DATA).json(newUser);
         } catch (e) {
