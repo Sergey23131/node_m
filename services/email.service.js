@@ -3,7 +3,7 @@ const EmailTemplates = require('email-templates');
 const path = require('path');
 
 const {NO_REPLY_EMAIL_PASSWORD, NO_REPLY_EMAIL} = require('../configs/config');
-const allTemplates = require('../emailTemplaes');
+const allTemplates = require('../emailTemplaes/index');
 const {ErrorHandler, errors_massage, errors_code} = require('../errors');
 
 const templateParser = new EmailTemplates({
@@ -25,12 +25,12 @@ const transporter = nodemailer.createTransport({
 
 const sendMail = async (userMail, emailAction, context = {}) => {
 
-
     const templateInfo = allTemplates[emailAction];
 
     if (!templateInfo) {
         throw new ErrorHandler(errors_massage.INVALID_ACTION, errors_code.ACTION);
     }
+
     const html = await templateParser.render(templateInfo.templateName, context);
 
     return transporter.sendMail({
